@@ -56,4 +56,14 @@ public class DemoController {
         return "ok.DemoController.save";
     }
 
+    /**
+     * 测试获取demo对象方法
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/getDemoById")
+    public Demo getById(long id) {
+        return demoService.getById(id);
+    }
 }

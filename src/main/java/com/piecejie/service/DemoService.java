@@ -1,5 +1,6 @@
 package com.piecejie.service;
 
+import com.piecejie.dao.DemoDao;
 import com.piecejie.dao.DemoRepository;
 import com.piecejie.entity.Demo;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,27 @@ public class DemoService {
     @Resource
     private DemoRepository demoRepository;
 
+    @Resource
+    private DemoDao demoDao;
+
+    /**
+     * 保存demo 通过jpa
+     *
+     * @param demo
+     */
     @Transactional//事物注解
     public void save(Demo demo) {
         demoRepository.save(demo);
+    }
+
+    /**
+     * 通过id获取Demo
+     *
+     * @param id
+     * @return
+     */
+    public Demo getById(long id) {
+        //return demoRepository.findOne(id);
+        return demoDao.getById(id);
     }
 }
